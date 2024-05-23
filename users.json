@@ -1,20 +1,8 @@
 [
   {
     "id": "0",
-    "name": "Nash Tefison",
-    "email": "nashtefison@gmail.com",
-    "password": "TefisonNathaniah"
-  },
-  {
-    "id": "1",
     "name": "Tefison Nathaniah Jean Baptiste",
     "email": "tefisonnathaniah@gmail.com",
-    "password": "Nasshunashy"
-  },
-  {
-    "id": "2",
-    "name": "Tefison Nathaniah",
-    "email": "tefisonnathaniah@gmail.com",
-    "password": "Nasshunashy"
+    "password": "tefisonnathaniah"
   }
 ]

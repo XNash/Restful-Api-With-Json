@@ -17,6 +17,13 @@ const checkUsersFile = (req, res, next) => {
   next();
 };
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173'); // Remplacez par l'URL de votre frontend
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 // Middleware pour lire les données utilisateur à partir du fichier JSON
 const readUserData = () => {
   const data = fs.readFileSync(userDataPath);
@@ -31,6 +38,7 @@ const writeUserData = (data) => {
 // GET - Récupérer tous les utilisateurs
 app.get('/users', checkUsersFile, (req, res) => {
   const users = readUserData();
+
   res.json(users);
 });
 
@@ -43,6 +51,10 @@ app.get('/users/:id', checkUsersFile, (req, res) => {
 
 // POST - Ajouter un nouvel utilisateur
 app.post('/users', checkUsersFile, (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({ error: 'Pas de données fournies' });
+  }
+
   const users = readUserData();
   const newUser = req.body;
   console.log(req.body)
@@ -85,6 +97,7 @@ app.delete('/users/:id', checkUsersFile, (req, res) => {
   const users = readUserData();
   const id = req.params.id;
   const index = users.findIndex(user => user.id === id);
+  res.setHeader("Access-Control-Allow-Origin", "*")
   if (index !== -1) {
     users.splice(index, 1);
     writeUserData(users);
@@ -94,6 +107,7 @@ app.delete('/users/:id', checkUsersFile, (req, res) => {
   }
 });
 
-app.listen(port, () => {
+app
+    .listen(port, () => {
   console.log(`Serveur démarré sur le port ${port}`);
 });
