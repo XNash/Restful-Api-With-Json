@@ -4,7 +4,7 @@
     "name": "Nash Tefison",
     "email": "nashtefison@gmail.com",
     "password": "Nasshunash"
-  },[
+  },
   {
     "id": "1",
     "name": "John Doe",
@@ -178,13 +178,5 @@
     "name": "Benjamin Mitchell",
     "email": "benjaminmitchell29@example.com",
     "password": "password333"
-  },
-  {
-    "id": "30",
-    "name": "Charlotte Perez",
-    "email": "charlotteperez30@example.com",
-    "password": "password444"
   }
-]
-
 ]
